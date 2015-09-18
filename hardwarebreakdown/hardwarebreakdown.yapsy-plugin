@@ -1,0 +1,8 @@
+[Core]
+Name = HardwareBreakdown
+Module = hardwarebreakdown
+
+[Documentation]
+Author = Erik Gomez
+Version = 0.1
+Website = http://eriknicolasgomez.com
