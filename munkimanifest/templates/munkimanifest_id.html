@@ -6,12 +6,12 @@
         <!-- /.panel-heading -->
         <div class="panel-body">
         <table class="table table-striped table-condensed table-bordered">
-        {% for item in data|dictsort:'memory' %}
-        {% if item.memory %}
+        {% for item in data|dictsort:'manifest' %}
+        {% if item.manifest %}
             <tr>
                 <td>
-                    <a href="{% url 'machine_list_front' 'MemoryBreakdown' item.memory %}">
-                    {{ item.memory }}
+                    <a href="{% url 'machine_list_id' 'MunkiManifest' item.manifest page theid %}">
+                    {{ item.manifest }}
                     <span class="badge pull-right">{{ item.count }}</span>
                     </a>
                 </td>

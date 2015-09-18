@@ -1,0 +1,8 @@
+[Core]
+Name = MunkiManifest
+Module = munkimanifest
+
+[Documentation]
+Author = Erik Gomez
+Version = 0.1
+Website = http://eriknicolasgomez.com

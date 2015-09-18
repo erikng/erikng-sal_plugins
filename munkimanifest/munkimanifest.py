@@ -15,29 +15,29 @@ class Memory(IPlugin):
 
         # There are three possible views we're going to be rendering to - front, bu_dashbaord and group_dashboard. If page is set to bu_dashboard, or$
         if page == 'front':
-            t = loader.get_template('erikng/memorybreakdown/templates/mem_front.html')
+            t = loader.get_template('erikng/munkimanifest/templates/munkimanifest_front.html')
             if not machines:
                 machines = Machine.objects.all()
 
         if page == 'bu_dashboard':
-            t = loader.get_template('erikng/memorybreakdown/templates/mem_id.html')
+            t = loader.get_template('erikng/munkimanifest/templates/munkimanifest_id.html')
             if not machines:
                 machines = utils.getBUmachines(theid)
 
         if page == 'group_dashboard':
-            t = loader.get_template('erikng/memorybreakdown/templates/mem_id.html')
+            t = loader.get_template('erikng/munkimanifest/templates/munkimanifest_id.html')
             if not machines:
                 machine_group = get_object_or_404(MachineGroup, pk=theid)
                 machines = Machine.objects.filter(machine_group=machine_group)
 
         if machines:
-            mem = machines.values('memory').annotate(count=Count('memory')).order_by()
+            mmanifest = machines.values('manifest').annotate(count=Count('manifest')).order_by()
         else:
-            mem = []
+            mmanifest = []
 
         c = Context({
-            'title': 'Memory Breakdown',
-            'data': mem,
+            'title': 'Munki Manifest',
+            'data': mmanifest,
             'theid': theid,
             'page': page
         })
@@ -46,6 +46,6 @@ class Memory(IPlugin):
     def filter_machines(self, machines, data):
         # You will be passed a QuerySet of machines, you then need to perform some filtering based on the 'data' part of the url from the show_widget$
 
-        machines = machines.filter(memory__exact=data)
+        machines = machines.filter(manifest__exact=data)
 
-        return machines, 'Installed Memory '+data
+        return machines, 'Munki Manifest '+data
