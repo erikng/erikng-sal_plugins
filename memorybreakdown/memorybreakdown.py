@@ -32,8 +32,6 @@ class Memory(IPlugin):
 
         if machines:
             mem = machines.values('memory').annotate(count=Count('memory')).order_by()
-#             mem = machines.values('memory').count()
-#            mem = machines.filter('memory_kb').count()
         else:
             mem = []
 
