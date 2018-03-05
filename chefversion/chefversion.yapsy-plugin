@@ -1,0 +1,9 @@
+[Core]
+Name = ChefVersion
+Module = chefversion
+
+[Documentation]
+Author = Erik Gomez
+Version = 0.1
+Website = https://eriknicolasgomez.com
+Description = Chef version
